@@ -1,0 +1,33 @@
+{
+    "name": "didatus/text-captcha",
+    "description": "Class for handling text captchas",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Hammer",
+            "email": "me@c8h5.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "symfony/translation": "^4.0",
+        "ramsey/uuid": "^3.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.2.*"
+    },
+    "conflict": {
+        "phpunit/php-timer": ">=2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Didatus\\TextCaptcha\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpunit"
+        ]
+    }
+}
