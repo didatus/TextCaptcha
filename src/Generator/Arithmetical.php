@@ -72,10 +72,19 @@ class Arithmetical implements GeneratorInterface
 
     private function calculateAnswer(array $questionParts): string
     {
-        $question = implode("", $questionParts);
-        $answer = null;
-        eval('$answer = ' . $question . ';');
+        $result = array_shift($questionParts);
 
-        return (string)$answer;
+        for ($i = 0; $i < count($questionParts); $i=$i+2) {
+            switch($questionParts[$i]) {
+                case '+':
+                    $result = $result + $questionParts[$i+1];
+                    break;
+                case '-':
+                    $result = $result - $questionParts[$i+1];
+                    break;
+            }
+        }
+
+        return $result;
     }
 }
