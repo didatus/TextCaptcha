@@ -12,5 +12,13 @@ return [
     'september' => 'September',
     'october' => 'Oktober',
     'november' => 'November',
-    'december' => 'Dezember'
+    'december' => 'Dezember',
+
+    'monday' => 'Montag',
+    'tuesday' => 'Dienstag',
+    'wednesday' => 'Mittwoch',
+    'thursday' => 'Donnerstag',
+    'friday' => 'Freitag',
+    'saturday' => 'Samstag',
+    'sunday' => 'Sonntag',
 ];

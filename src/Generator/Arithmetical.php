@@ -61,13 +61,25 @@ class Arithmetical implements GeneratorInterface
     private function getQuestionString(array $questionParts):string
     {
         $question = '';
+        foreach ($questionParts as $key => $part) {
+            if ($key % 2 == 0) {
+                $question .= $this->translator->trans($this->numbers[$part]);
+            } else {
+                $question .= $this->translator->trans($this->arithemticalFunctions[$part]);
+            }
+            $question .=  ' ';
+        }
+
+        /*
+        $question = '';
         $question .= $this->numbers[$questionParts[0]];
         $question .= ' ' . $this->arithemticalFunctions[$questionParts[1]] . ' ';
         $question .= $this->numbers[$questionParts[2]];
         $question .= ' ' . $this->arithemticalFunctions[$questionParts[3]] . ' ';
         $question .= $this->numbers[$questionParts[4]];
+        */
 
-        return $question;
+        return rtrim($question);
     }
 
     private function calculateAnswer(array $questionParts): string

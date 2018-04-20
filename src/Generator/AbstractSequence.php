@@ -18,7 +18,8 @@ abstract class AbstractSequence implements GeneratorInterface
 
     public function getTextCaptcha(): TextCaptcha
     {
-        $sequence = $this->generateSequence();
+        $sequence = $this->translateSequence($this->generateSequence());
+
         $answer = array_pop($sequence);
 
         return new TextCaptcha(implode(', ', $sequence), $answer);
@@ -32,5 +33,15 @@ abstract class AbstractSequence implements GeneratorInterface
         }
 
         return array_slice($sequencePool, rand(0, count($sequencePool) - 4), 4);
+    }
+
+    private function translateSequence($sequence)
+    {
+        $translateSequence = [];
+        foreach ($sequence as $element) {
+            $translateSequence[] = $this->translator->trans($element);
+        }
+
+        return $translateSequence;
     }
 }

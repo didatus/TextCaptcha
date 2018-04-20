@@ -18,9 +18,9 @@ class TextCaptchaHandler
 
     private $generators = [];
 
-    public function __construct()
+    public function __construct($locale = 'de_DE')
     {
-        $this->translator = $this->initiateTranslator();
+        $this->translator = $this->initiateTranslator($locale);
 
         $this->registerCaptchaGenerator(Week::class);
         $this->registerCaptchaGenerator(Month::class);
@@ -50,9 +50,9 @@ class TextCaptchaHandler
     /**
      * @return Translator
      */
-    private function initiateTranslator():Translator
+    private function initiateTranslator($locale):Translator
     {
-        $translator = new Translator('de_DE');
+        $translator = new Translator($locale);
         $translator->addLoader('phpfile', new PhpFileLoader());
         $translator->addResource('phpfile', __DIR__ . '/../translations/mathematical.de.php', 'de_DE');
         $translator->addResource('phpfile', __DIR__ . '/../translations/mathematical.en.php', 'en_US');
